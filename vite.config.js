@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: 'https://krzysztofrozbicki.github.io/goit-react-hw-08-phonebook/',
 });
