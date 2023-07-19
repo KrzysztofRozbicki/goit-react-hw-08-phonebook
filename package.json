@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://KrzysztofRozbicki.github.io/goit-react-hw-07-phonebook",
+  "homepage": "https://KrzysztofRozbicki.github.io/goit-react-hw-08-phonebook",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,8 +17,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.2",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "styled-components": "^6.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

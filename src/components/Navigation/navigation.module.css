@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  width: 1280px;
+  justify-content: space-between;
+  padding-block: 2rem;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+}
