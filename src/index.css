@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -8,12 +12,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 h1,
@@ -38,4 +36,22 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.authorization-form {
+  @apply flex flex-col gap-4 items-center;
+}
+.authorization-form input {
+  @apply border-2 py-2 px-2;
+}
+
+.authorization-form button {
+  @apply bg-slate-700 shadow-md shadow-stone-700 font-bold text-neutral-200 py-2 px-4 rounded-md hover:bg-teal-900 hover:text-neutral-100 hover:shadow-teal-800;
+}
+
+.navigation-link {
+  @apply flex gap-2 items-center text-lg font-semibold hover:text-teal-600;
+}
+.navigation-link.active {
+  @apply text-teal-600;
 }

@@ -1,8 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addFilter } from '../../redux/contacts/filterSlice.js';
 
-import css from './filter.module.css';
-
 export const Filter = () => {
   const dispatch = useDispatch();
   //Ustawia filtr do wyszukiwania kontaktów
@@ -11,14 +9,16 @@ export const Filter = () => {
   };
 
   return (
-    <div className={css.filter}>
-      <p>Find contacts by name</p>
+    <div className="flex gap-2 w-full items-center my-4 text-xl">
       <input
-        className={css.filter__input}
+        className="border-2 px-2 py-2"
         type="text"
         onChange={handleFilter}
         placeholder="Contact name"
       ></input>
+      <div className="invisible sm:visible relative right-10">
+        <ion-icon name="search-outline" className="z-0"></ion-icon>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,15 @@
-import css from './contactForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addContact } from '../../redux/contacts/operations';
+import { addContact, editContact } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selectors';
+import { closeAddContact } from '../../redux/menu/menuSlice';
+import { selectEditID } from '../../redux/contacts/selectors';
+import { clearEditID } from '../../redux/contacts/contactsSlice';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-
   const contacts = useSelector(selectContacts);
+  const editID = useSelector(selectEditID);
 
   //funkcja tworzy kontakt i modyfikuje state dodajac do niego nowy kontakt
   const handleFormSubmit = event => {
@@ -27,16 +29,32 @@ export const ContactForm = () => {
     ) {
       return alert(`${contact.name} already in contacts`);
     }
+    if (editID) {
+      dispatch(editContact(editID));
+      dispatch(closeAddContact());
+      dispatch(clearEditID());
+      return;
+    }
+
     dispatch(addContact(contact));
+    dispatch(closeAddContact());
     event.target.reset();
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className={css.form}>
+    <form
+      onSubmit={handleFormSubmit}
+      className="authorization-form absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-400 rounded-lg py-8 px-8"
+    >
+      <div
+        onClick={() => dispatch(closeAddContact())}
+        className="absolute top-2 right-2 text-xl hover:cursor-pointer"
+      >
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
       <label>
-        Name
         <input
-          className={css.form__input}
+          className=""
           type="text"
           name="name"
           id=""
@@ -47,19 +65,23 @@ export const ContactForm = () => {
         />
       </label>
       <label>
-        Number
         <input
-          className={css.form__input}
+          className=""
           type="tel"
           name="number"
           placeholder="Contact number"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
         />
       </label>
-      <button className={css.form__button} type="submit">
-        Add contact
-      </button>
+      {editID ? (
+        <button className="bg-amber-600" type="submit">
+          Edit
+        </button>
+      ) : (
+        <button className="" type="submit">
+          Add Contact
+        </button>
+      )}
     </form>
   );
 };

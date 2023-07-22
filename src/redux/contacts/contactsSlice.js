@@ -1,8 +1,14 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './operations';
 
 const initialState = {
   contacts: [],
+  editID: null,
   isLoading: false,
   error: null,
 };
@@ -20,6 +26,14 @@ const handleFulfilled = state => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
+  reducers: {
+    setEditID: (state, action) => {
+      state.editID = action.payload;
+    },
+    clearEditID: state => {
+      state.editID = null;
+    },
+  },
   extraReducers: builder => {
     // Fetch contacts from database
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
@@ -41,10 +55,23 @@ const contactsSlice = createSlice({
       );
       state.contacts.splice(index, 1);
     });
+    //Edit contact in database
+    builder.addCase(editContact.fulfilled, (state, action) => {
+      handleFulfilled(state);
+      const index = state.contacts.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.contacts[index] = action.payload;
+    });
 
     //Add all for pending and rejected
     builder.addMatcher(
-      isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.rejected)
+      isAnyOf(
+        fetchContacts.pending,
+        addContact.pending,
+        deleteContact.pending,
+        editContact.pending
+      )
     ),
       state => {
         state.isLoading = true;
@@ -53,7 +80,8 @@ const contactsSlice = createSlice({
       isAnyOf(
         fetchContacts.rejected,
         addContact.rejected,
-        deleteContact.rejected
+        deleteContact.rejected,
+        editContact.rejected
       )
     ),
       (state, action) => {
@@ -61,5 +89,7 @@ const contactsSlice = createSlice({
       };
   },
 });
+
+export const { setEditID, clearEditID } = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;

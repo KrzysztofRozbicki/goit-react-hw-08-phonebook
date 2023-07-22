@@ -18,7 +18,7 @@ export const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="authorization-form">
       <input type="text" name="login" placeholder="login" required />
       <input type="email" name="email" placeholder="email" required />
       <input type="password" name="password" placeholder="password" required />
