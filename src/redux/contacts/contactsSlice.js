@@ -12,6 +12,7 @@ const initialState = {
   editID: null,
   isLoading: false,
   error: null,
+  sorting: null,
 };
 
 const handleRejected = (state, action) => {
@@ -39,6 +40,21 @@ const contactsSlice = createSlice({
     },
     clearCountryCode: state => {
       state.countryCode = null;
+    },
+    toggleSort: state => {
+      switch (state.sorting) {
+        case 'ascending':
+          state.sorting = 'descending';
+          break;
+        case 'descending':
+          state.sorting = 'ascending';
+          break;
+        case null:
+          state.sorting = 'ascending';
+          break;
+        default:
+          state.sorting = null;
+      }
     },
   },
   extraReducers: builder => {
@@ -97,7 +113,12 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { setEditID, clearEditID, setCountryCode, clearCountryCode } =
-  contactsSlice.actions;
+export const {
+  setEditID,
+  clearEditID,
+  setCountryCode,
+  clearCountryCode,
+  toggleSort,
+} = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;

@@ -31,6 +31,10 @@ export const Navigation = () => {
         } sm:right-0 sm:w-auto`}
         onClick={() => dispatch(closeMenu())}
       >
+        <NavLink to="/" className="navigation-link" end>
+          <ion-icon name="home-outline"></ion-icon>
+          Home
+        </NavLink>
         {isLoggedIn ? <UserMenu /> : <AuthorizationMenu />}
       </nav>
     </div>

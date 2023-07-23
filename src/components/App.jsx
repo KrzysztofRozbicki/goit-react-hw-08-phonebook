@@ -7,6 +7,7 @@ import { Contacts } from '../pages/Contacts';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import { ContactForm } from './ContactForm/ContactForm';
+import { User } from '../pages/User';
 
 import { Navigation } from './Navigation';
 import { refreshUser } from '../redux/authorization/operations';
@@ -66,6 +67,10 @@ const App = () => {
             element={
               <PrivateRoute redirectTo="/login" component={<Contacts />} />
             }
+          />
+          <Route
+            path="/user"
+            element={<PrivateRoute redirectTo="/login" component={<User />} />}
           />
         </Routes>
       </main>

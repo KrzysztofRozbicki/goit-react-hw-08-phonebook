@@ -15,7 +15,7 @@ export const ContactList = () => {
       {contacts.map(({ id, name, number }) => (
         <li
           key={id}
-          className="shadow-md shadow-slate-400 py-4 px-6 bg-slate-200 rounded-md font-semibold flex flex-col items-start gap-1"
+          className="shadow-md shadow-slate-400 py-3 px-3 sm:py-4 sm:px-6 bg-slate-200 rounded-md font-semibold flex flex-col items-start gap-1"
         >
           <div className="grid-container">
             <p className=""> Name: </p>

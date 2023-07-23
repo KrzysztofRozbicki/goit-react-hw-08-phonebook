@@ -12,7 +12,7 @@ export const UserMenu = () => {
   return (
     <>
       {/* TUTAJ ZMIENIĆ I DODAĆ OPCJE KONTA! */}
-      <NavLink to="/contacts" className="navigation-link" end>
+      <NavLink to="/user" className="navigation-link" end>
         <ion-icon name="person-circle-outline"></ion-icon>
         {user.name}
       </NavLink>
