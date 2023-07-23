@@ -55,3 +55,22 @@ li {
 .navigation-link.active {
   @apply text-teal-600;
 }
+
+.PhoneInputCountry {
+  position: relative;
+  left: 30px;
+  z-index: 20;
+}
+
+.PhoneInputInput {
+  position: relative;
+  left: -20px;
+  text-align: right;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 0.5rem;
+  column-gap: 2rem;
+}

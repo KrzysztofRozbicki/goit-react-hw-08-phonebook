@@ -26,7 +26,7 @@ export const Navigation = () => {
         <ion-icon name={isOpen ? 'close' : 'menu'}></ion-icon>
       </div>
       <nav
-        className={`z-[-1] flex flex-col sm:flex-row gap-4 items-end pr-4 py-4 absolute right-0 bg-slate-200 w-full transition-all duration-300 ease-in ${
+        className={`flex flex-col sm:flex-row gap-4 items-end pr-4 py-4 absolute right-0 bg-slate-200 w-full transition-all duration-300 ease-in ${
           isOpen ? 'right-0' : 'right-[-700px]'
         } sm:right-0 sm:w-auto`}
         onClick={() => dispatch(closeMenu())}

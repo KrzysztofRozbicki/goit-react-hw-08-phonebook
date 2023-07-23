@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   contacts: [],
+  countryCode: null,
   editID: null,
   isLoading: false,
   error: null,
@@ -32,6 +33,12 @@ const contactsSlice = createSlice({
     },
     clearEditID: state => {
       state.editID = null;
+    },
+    setCountryCode: (state, action) => {
+      state.countryCode = action.payload;
+    },
+    clearCountryCode: state => {
+      state.countryCode = null;
     },
   },
   extraReducers: builder => {
@@ -90,6 +97,7 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { setEditID, clearEditID } = contactsSlice.actions;
+export const { setEditID, clearEditID, setCountryCode, clearCountryCode } =
+  contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;

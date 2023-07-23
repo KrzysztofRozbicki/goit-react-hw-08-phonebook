@@ -14,7 +14,7 @@ export const Filter = () => {
         className="border-2 px-2 py-2"
         type="text"
         onChange={handleFilter}
-        placeholder="Contact name"
+        placeholder="Search contact..."
       ></input>
       <div className="invisible sm:visible relative right-10">
         <ion-icon name="search-outline" className="z-0"></ion-icon>
