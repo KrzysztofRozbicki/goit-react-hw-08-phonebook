@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
@@ -6,6 +7,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
 };
 
 const authorizationSlice = createSlice({
@@ -17,10 +19,18 @@ const authorizationSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [register.rejected](state, action) {
+      state.error = action.payload;
+      toast.error(`Account already exists, please try again`);
+    },
     [logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+    },
+    [logIn.rejected](state, action) {
+      state.error = action.payload;
+      toast.error(`Wrong login or password, please try again`);
     },
     [logOut.fulfilled](state) {
       state.user = { name: null, email: null };

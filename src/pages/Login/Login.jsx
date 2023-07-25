@@ -21,7 +21,7 @@ export const Login = () => {
   return (
     <>
       <form onSubmit={handleSubmit} className="authorization-form">
-        <input type="text" name="email" placeholder="email" required />
+        <input type="email" name="email" placeholder="email" required />
         <input
           type="password"
           name="password"

@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Home } from '../pages/Home';
 import { Contacts } from '../pages/Contacts';
@@ -77,6 +79,7 @@ const App = () => {
       <footer className="w-full z-[-1] text-sm relative text-center left-0 bottom-0  px-4 py-4 ">
         @Copyright Krzysztof Rozbicki for GoIT 07/2023
       </footer>
+      <ToastContainer />
     </>
   );
 };
